@@ -21,6 +21,18 @@
             <input type="text" name="txtTelefone" maxlength="30" /> <br><br>
             <label>E-mail: </label>
             <input type="email" name="txtEmail" required /> <br><br>
+            
+            <label>CPF: </label>
+            <input type="text" name="txtCPF" required /> <br><br>
+            
+            <label>Cidade: </label>
+            <select name="cidade" >
+                <option value="0">Selecione...</option>
+                <option value="3">Alvorada</option>
+                <option value="1">Porto Alegre</option>
+                <option value="2">Viamão</option>
+            </select>
+            <br><br>
             <label>Sexo: </label>
             <input type="radio" name="rbSexo" value="f" /> Feminino 
             <input type="radio" name="rbSexo" value="m" /> Masculino <br><br>
