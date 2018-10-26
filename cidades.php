@@ -13,10 +13,10 @@
         
         <br><br><br>
         
-        <form action="controller/salvarCidades.php" method="GET" >
+        <form action="controller/salvarCidade.php?inserir" method="POST" >
             <label>Nome: </label>
             <input type="text" name="txtNome" />
-            <input type="submit" value="Salvar"
+            <input type="submit" value="Salvar" />
         </form>
         
         <hr>
