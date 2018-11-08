@@ -1,3 +1,9 @@
+<?php
+    include_once 'model/clsCidade.php';
+    include_once 'model/clsCliente.php';
+    include_once 'dao/clsConexao.php';
+    include_once 'dao/clsClienteDAO.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,19 +23,14 @@
             <button>Cadastrar novo cliente</button></a>
         
         <br><br>
-        
         <?php
-        
-        $lista = ClienteDAO::getClientes();
-         
-        if( $lista->count() == 0 ){
-            echo '<h2><b>Nenhum cliente cadastrado</b></h2>';
-        }  else {
+            $lista = ClienteDAO::getClientes();
             
-
-          
+            if( $lista->count() == 0 ){
+                echo '<h3><b>Nenhum cliente cadastrado!</b></h3>';
+            } else {
+              
         ?>
-        
         <table border="1">
             <tr>
                 <th>Código</th>
@@ -39,38 +40,45 @@
                 <th>Telefone</th>
                 <th>E-mail</th>
                 <th>Cidade</th>
+                <th>Sexo</th>
+                <th>Tem Filhos</th>
                 <th>Editar</th>
                 <th>Excluir</th>
             </tr>
             
-           <?php
-            
-            foreach ($lista as $cliente) {  
+            <?php
+                    foreach ($lista as $cli){
+                        echo '<tr> ';
+                        echo '   <td>'.$cli->getId().'</td>';
+                        echo '   <td><img src="fotos_clientes/'.$cli->getFoto().'" width="30px" /></td>';
+                        echo '   <td>'.$cli->getNome().'</td>';
+                        echo '   <td>'.$cli->getCpf().'</td>';
+                        echo '   <td>'.$cli->getTelefone().'</td>';
+                        echo '   <td>'.$cli->getEmail().'</td>';
+                        echo '   <td>'.$cli->getCidade()->getNome().'</td>';
+                        if( $cli->getSexo() == "f" )
+                            echo '   <td>Feminino</td>';
+                        else
+                            echo '   <td>Masculino</td>';
+                        
+                        if( $cli->getFilhos() )
+                            echo '   <td>Sim</td>';
+                        else
+                            echo '   <td>Não</td>';
+                        
+                        echo '   <td><a href="frmCliente.php?editar&idCliente='.$cli->getId().'" ><button>Editar</button></a></td>';
+                        echo '   <td><a href="controller/salvarCliente.php?excluir&idCliente='.$cli->getId().'" ><button>Excluir</button></a></td>';
+                        echo '</tr>';
+                        
+                    }
             ?>
-            <tr>
-                <td><?php echo $cliente->getId();?></td>
-                <td> 
-                    <img src="fotos_clientes/<?php echo $cliente->getFoto(); ?>" 
-                         width="50px"  /> </td>
-                <td><?php echo $cliente->getNome(); ?></td>
-                <td><?php echo $cliente->getCpf(); ?></td>
-                <td><?php echo $cliente->getTelefone(); ?></td>
-                <td><?php echo $cliente->getEmail(); ?></td>
-                <td><?php echo $cliente->getCidade()->getNome(); ?></td>
-                <td> <a href="frmCliente.php?editar&idCliente=<?php echo $cliente->getId(); ?>"><button>Editar</button></a>  </td>
-                <td> <a href="controller/salvarCliente.php?excluir&idCliente=<?php echo $cliente->getId(); ?>"><button>Excluir</button></a> </td>
-            </tr>
-            <?php  
-            }
-            ?>
-           
-            
             
         </table>
         
-       
         <?php
-        }
+        
+            }
+            
         ?>
         
     </body>

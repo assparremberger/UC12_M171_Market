@@ -1,3 +1,9 @@
+<?php
+    include_once 'model/clsCidade.php';
+    include_once 'dao/clsCidadeDAO.php';
+    include_once 'dao/clsConexao.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,13 +34,21 @@
             <label>Cidade: </label>
             <select name="cidade" >
                 <option value="0">Selecione...</option>
-                <option value="3">Alvorada</option>
-                <option value="1">Porto Alegre</option>
-                <option value="2">Viamão</option>
+                
+                <?php
+                    $lista = CidadeDAO::getCidades();
+                    
+                    foreach ($lista as $cid){
+                        echo '<option value="'.$cid->getId().'" >'.
+                                $cid->getNome().'</option>';
+                    }
+                ?>
+                
             </select>
+            
             <br><br>
             <label>Sexo: </label>
-            <input type="radio" name="rbSexo" value="f" /> Feminino 
+            <input type="radio" name="rbSexo" value="f" required /> Feminino 
             <input type="radio" name="rbSexo" value="m" /> Masculino <br><br>
             <input type="checkbox" name="cbFilhos" /> Tem Filhos <br><br>
             <label>Foto: </label>
