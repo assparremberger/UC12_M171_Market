@@ -72,8 +72,11 @@ if( isset($_REQUEST['excluir'])){
 
 if( isset( $_REQUEST['confirmaExcluir'] ) ){
     $id = $_REQUEST['idCliente'];
-    $cliente = new Cliente();
-    $cliente->setId($id);
+    $cliente = ClienteDAO::getClienteById($id);
+    if( $cliente->getFoto() != "" &&  
+        $cliente->getFoto() != "sem_foto.png" ){
+        unlink("../fotos_clientes/".$cliente->getFoto() );
+    }
     ClienteDAO::excluir($cliente);
     header("Location: ../clientes.php");
 }

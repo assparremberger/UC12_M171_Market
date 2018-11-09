@@ -5,8 +5,9 @@
         <group>
             <file>file:/C:/xampp/htdocs/m171/market/dao/clsCidadeDAO.php</file>
             <file>file:/C:/xampp/htdocs/m171/market/controller/salvarCliente.php</file>
-            <file>file:/C:/xampp/htdocs/m171/market/clientes.php</file>
+            <file>file:/C:/xampp/htdocs/m171/market/frmCliente.php</file>
             <file>file:/C:/xampp/htdocs/m171/market/dao/clsClienteDAO.php</file>
+            <file>file:/C:/xampp/htdocs/m171/market/clientes.php</file>
         </group>
     </open-files>
 </project-private>
