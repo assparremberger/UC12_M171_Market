@@ -22,9 +22,9 @@ class CidadeDAO {
         Conexao::executar($sql);
         
     }
-    public static function excluir( $cidade ){
+    public static function excluir( $idCidade ){
         $sql =    "DELETE FROM cidades "
-                . " WHERE id = ".$cidade->getId();
+                . " WHERE id = ".$idCidade;
         Conexao::executar($sql);
         
     }

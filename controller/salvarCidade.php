@@ -13,3 +13,19 @@ if( isset( $_REQUEST['inserir'] ) ){
     header("Location: ../cidades.php");
 }
 
+if( isset($_REQUEST['excluir'])){
+    $id = $_REQUEST['idCidade'];
+    echo '<br><br><hr> '
+       . '<h3>Confirma a exclusão da Cidade  </h3> '
+       . '<br><hr>';
+    echo  '<a href="?confirmaExcluir&idCidade='.$id.'">'
+        . '    <button>SIM</button></a> ';
+    echo '<a href="../cidades.php" ><button>NÃO</button></a>';
+}
+
+if( isset( $_REQUEST['confirmaExcluir'] ) ){
+    $id = $_REQUEST['idCidade'];
+    CidadeDAO::excluir($id);
+    header("Location: ../cidades.php");
+}
+

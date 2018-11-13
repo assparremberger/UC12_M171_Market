@@ -28,15 +28,14 @@ class ClienteDAO {
     
     public static function editar($cliente){
         $sql = "UPDATE clientes SET " 
-                . " nome =  '".$cliente->getNome()."' , "
-                . " telefone =  '".$cliente->getTelefone()."' , "
-                . " cpf =  '".$cliente->getCpf()."' , "
-                . " email =  '".$cliente->getEmail()."' , "
-                . " senha =  '".$cliente->getSenha()."' , "
-                . " foto  =  '".$cliente->getFoto()."' , "
+                . " nome =     '".$cliente->getNome()."' , "
+                . " telefone = '".$cliente->getTelefone()."' , "
+                . " cpf =      '".$cliente->getCpf()."' , "
+                . " email =    '".$cliente->getEmail()."' , "
+                . " foto  =    '".$cliente->getFoto()."' , "
                 . " codCidade = ".$cliente->getCidade()->getId()." , "
-                . " sexo = '".$cliente->getSexo()."' , "
-                . " filhos = ".$cliente->getFilhos()
+                . " sexo =     '".$cliente->getSexo()."' , "
+                . " filhos =    ".$cliente->getFilhos()
                 . " WHERE id = ".$cliente->getId();
         
         Conexao::executar( $sql );
