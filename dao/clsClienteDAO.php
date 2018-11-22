@@ -113,7 +113,26 @@ class ClienteDAO {
         return $cliente;
     }
   
-    
+    public static function logar($login, $senha){
+        $sql = " SELECT id, nome, foto"
+             . " FROM clientes "
+             . " WHERE ( email = '".$login."' OR "
+             . "           CPF = '".$login."' )  "
+             . "     AND senha = '".$senha."'    ";
+        $result = Conexao::consultar($sql);
+        
+        if( mysqli_num_rows( $result ) > 0 ){
+            $dados = mysqli_fetch_assoc( $result );
+            $cliente = new Cliente();
+            $cliente->setId( $dados['id'] );
+            $cliente->setNome( $dados['nome'] );
+            $cliente->setFoto( $dados['foto'] );
+            return $cliente;
+        } else {
+            return NULL;
+        }
+        
+    }
    
     
 }
