@@ -9,7 +9,7 @@
  */
 class Cliente {
     private $id, $nome, $telefone, $email, $cpf,
-            $senha, $filhos, $cidade, $foto, $sexo;
+            $senha, $filhos, $cidade, $foto, $sexo, $admin;
     
     function __construct($id = NULL, $nome = NULL, $telefone = NULL, 
             $email = NULL, $cpf = NULL, $senha = NULL, $filhos = NULL, 
@@ -26,6 +26,15 @@ class Cliente {
         $this->sexo = $sexo;
     }
     
+    function getAdmin() {
+        return $this->admin;
+    }
+
+    function setAdmin($admin) {
+        $this->admin = $admin;
+    }
+
+        
     function getId() {
         return $this->id;
     }

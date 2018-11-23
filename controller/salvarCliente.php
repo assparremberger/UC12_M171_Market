@@ -17,11 +17,19 @@ if( isset($_REQUEST['inserir'])  ){
         $cliente->setTelefone( $_POST['txtTelefone'] );
         $cliente->setEmail( $_POST['txtEmail'] );
         $cliente->setCpf( $_POST['txtCPF'] );
+        
         if( isset( $_POST['cbFilhos']) ){
             $cliente->setFilhos( 1 );
         } else {
             $cliente->setFilhos( 0 );
         }
+        
+        if( isset( $_POST['cbAdmin']) ){
+            $cliente->setAdmin( 1 );
+        } else {
+            $cliente->setAdmin( 0 );
+        }
+        
         $cliente->setSexo( $_POST['rbSexo']);
         $senha = md5($senha);
         $cliente->setSenha( $senha );
@@ -63,6 +71,13 @@ if( isset($_REQUEST['editar'])){
     } else {
         $cliente->setFilhos( 0 );
     }
+    
+    if( isset( $_POST['cbAdmin']) ){
+        $cliente->setAdmin( 1 );
+    } else {
+        $cliente->setAdmin( 0 );
+    }
+        
     $cliente->setSexo( $_POST['rbSexo']);
   
     $cid = new Cidade();

@@ -18,6 +18,9 @@
         $_SESSION['idCliente'] = $cliente->getId();
         $_SESSION['nome'] = $cliente->getNome();
         $_SESSION['foto'] = $cliente->getFoto();
+        $_SESSION['admin'] = $cliente->getAdmin();
+        
+        
         
         header("Location: ".$_SERVER['HTTP_REFERER']);
     }
