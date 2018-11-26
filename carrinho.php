@@ -23,7 +23,7 @@ if( isset($_REQUEST['remover'])){
 }
 
 if( isset($_REQUEST['excluir'])){
-    if ( isset($_SESSION["carrinho"][$id] ) ){
+    if ( isset( $_SESSION["carrinho"][$id] ) ){
         unset( $_SESSION["carrinho"][$id] );
     }
 }
