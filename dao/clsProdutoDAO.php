@@ -76,7 +76,7 @@ class ProdutoDAO {
              . " FROM produtos p "
              . " INNER JOIN categorias c "
              . " ON p.codCategoria = c.id "
-             . " WHERE c.id = ".$id ;
+             . " WHERE p.id = ".$id ;
         
         $result = Conexao::consultar($sql);
       

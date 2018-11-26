@@ -13,13 +13,7 @@ class Produto {
     function __construct(){
     }
     
-    function getAdmin() {
-        return $this->admin;
-    }
-
-    function setAdmin($admin) {
-        $this->admin = $admin;
-    }
+    
 
         
     function getId() {
