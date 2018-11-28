@@ -34,6 +34,16 @@ class Conexao {
             self::fechar( $conn );
         }
     } 
+    public static function executarComRetornoId( $sql ){
+        $conn = self::abrir();
+        $id = 0;
+        if( $conn ){
+            mysqli_query($conn, $sql);
+            $id = mysqli_insert_id($conn);
+            self::fechar( $conn );
+        }
+        return $id;
+    } 
     
     public static function consultar( $sql ){
         $conn = self::abrir();
