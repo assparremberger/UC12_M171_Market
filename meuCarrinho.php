@@ -42,7 +42,12 @@
                     echo '      <td>'.$produto->getId().'</td>';
                     echo '      <td><img width="50px" src="fotos_produtos/'.$produto->getFoto().'" /></td>';
                     echo '      <td>'.$produto->getNome().'</td>';
-                    echo '      <td>'.$qtd.'</td>';
+                    
+                    echo '      <td>'.$qtd.' | <a href="carrinho.php?remover&'
+                            . 'idProduto='.$produto->getId().'"><button>-</button></a> | '
+                            . '<a href="carrinho.php?adicionar&'
+                            . 'idProduto='.$produto->getId().'"><button>+</button></a> | </td>';
+                    
                     echo '      <td>R$ '.$produto->getPreco().'</td>';
                     $subtotal = $qtd * $produto->getPreco();
                     $total += $subtotal;
@@ -52,10 +57,14 @@
                     echo ' </tr>';
                 }
                 echo '  <tr>';
-                echo '      <td colspan="4">Total:</td>';
-                echo '      <td colspan="3">R$ '.$total.'</td>';
+                echo '      <th colspan="4">Total:</th>';
+                echo '      <th colspan="3">R$ '.$total.'</th>';
                 echo '  </tr>';
                 echo '</table>';
+                
+                echo '<hr> '
+                   . '<a href="finalizarPedido.php">'
+                   . '       <button>Finalizar Pedido</button></a>';
             }
             
         
