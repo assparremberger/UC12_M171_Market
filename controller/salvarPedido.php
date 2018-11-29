@@ -14,6 +14,13 @@ if( isset($_REQUEST['inserir']) ){
     $cliente->setId( $_SESSION['idCliente']);
     date_default_timezone_set('America/Sao_Paulo');
     $horario = date("Y-m-d H:i:s");
+    
+    $pedido = new Pedido();
+    $pedido->setEndereco($endereco);
+    $pedido->setPagamento($pagamento);
+    $pedido->setHorario($horario);
+    $pedido->setCliente($cliente);
+    
     $idPedido = PedidoDAO::inserir($pedido);
     $pedido->setId( $idPedido );
     foreach ($_SESSION['carrinho'] as $idProduto => $qtd) {
