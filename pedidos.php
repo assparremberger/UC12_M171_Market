@@ -1,6 +1,12 @@
 <?php
     session_start();
     if( isset($_SESSION['logado']) && $_SESSION['logado'] ){
+        
+        include_once 'model/clsCliente.php';
+        include_once 'model/clsPedido.php';
+        include_once 'dao/clsPedidoDAO.php';
+        include_once 'dao/clsConexao.php';
+        
         $idCliente = 0;
         
         if( !isset( $_SESSION['admin'] ) || !$_SESSION['admin'] ){

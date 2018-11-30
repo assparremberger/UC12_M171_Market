@@ -1,6 +1,10 @@
 <?php
+include_once '../model/clsCategoria.php';
+include_once '../model/clsProduto.php';
 include_once '../model/clsPedido.php';
 include_once '../dao/clsPedidoDAO.php';
+include_once '../dao/clsProdutoDAO.php';
+include_once '../dao/clsConexao.php';
 
 if( isset($_REQUEST['inserir']) ){
     $pagamento = $_POST['pagamento'];

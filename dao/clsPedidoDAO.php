@@ -30,16 +30,17 @@ class PedidoDAO {
              . " c.id, c.nome,                                   "
              . " ( SELECT SUM( i.preco * i.quantidade )          "
              . "     FROM itens i                                "
-             . "     INNER JOIN pedidos p ON i.codPedido = p.id  "
+             . "     INNER JOIN pedidos p2 ON i.codPedido = p2.id  "
              . "     WHERE i.codPedido = p.id ) AS valor         "
              . " FROM pedidos p                                  "
              . " INNER JOIN clientes c ON c.id = p.codCliente    "
              . $where." ORDER BY p.horario DESC                  ";
+     
         $result = Conexao::consultar($sql);
         
         $lista = new ArrayObject();
         
-        while ( list( $id, $end, $pag, $data, $codCli, $nomeCli ) 
+        while ( list( $id, $end, $pag, $data, $codCli, $nomeCli, $valor ) 
                 = mysqli_fetch_row($result) ){
             
             $cliente = new Cliente();
@@ -52,6 +53,7 @@ class PedidoDAO {
             $pedido->setPagamento($pag);
             $pedido->setHorario($data);
             $pedido->setCliente($cliente);
+            $pedido->setValor($valor);
             
             $lista->append($pedido);
         }

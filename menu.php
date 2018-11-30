@@ -21,6 +21,10 @@
             <button>Cliente</button></a>
         <a href="categorias.php">
             <button>Categoria</button></a>
+        
+        <a href="pedidos.php">
+            <button>Pedidos</button></a>
+        
    <?php
           echo 'Olá, '.$_SESSION['nome'];
           echo '<a href="sair.php"><button>Sair</button></a>';
