@@ -12,6 +12,15 @@ if( isset( $_REQUEST['inserir'] ) ){
     
     header("Location: ../cidades.php");
 }
+if( isset( $_REQUEST['editar'] ) ){
+    $cidade = new Cidade();
+    $cidade->setId( $_REQUEST['idCidade'] );
+    $cidade->setNome( $_POST['txtNome']  );
+    
+    CidadeDAO::editar($cidade);
+    
+    header("Location: ../cidades.php");
+}
 
 if( isset($_REQUEST['excluir'])){
     $id = $_REQUEST['idCidade'];

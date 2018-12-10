@@ -2,6 +2,20 @@
 include_once 'model/clsCidade.php';
 include_once 'dao/clsCidadeDAO.php';
 include_once 'dao/clsConexao.php';
+
+$nome = "";
+$idCidade = 0;
+$action = "inserir";
+
+if( isset($_REQUEST['editar'])){
+    $idCidade = $_REQUEST['idCidade'];
+    $cidadeEditar = CidadeDAO::getCidadeById( $idCidade );
+    $nome = $cidadeEditar->getNome();
+    
+    $action = "editar&idCidade=".$idCidade;
+    
+}
+        
 ?>
 
 <!DOCTYPE html>
@@ -19,9 +33,9 @@ include_once 'dao/clsConexao.php';
         
         <br><br><br>
         
-        <form action="controller/salvarCidade.php?inserir" method="POST" >
+        <form action="controller/salvarCidade.php?<?php echo $action; ?>" method="POST" >
             <label>Nome: </label>
-            <input type="text" name="txtNome" />
+            <input type="text" name="txtNome" value="<?php echo $nome; ?>" />
             <input type="submit" value="Salvar" />
         </form>
         
@@ -52,7 +66,7 @@ include_once 'dao/clsConexao.php';
                         <td>'.$cidade->getId().'</td>
                         <td>'.$cidade->getNome().'</td>
                         <td> 
-                            <a href="controller/salvarCidade.php?editar&idCidade='.$cidade->getId().'">
+                            <a href="?editar&idCidade='.$cidade->getId().'">
                             
                             <button>Editar</button></a>
                         </td>
